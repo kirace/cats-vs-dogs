@@ -34,11 +34,25 @@
 
 #dogCrown {
   margin-left:370px;
-  visibility: hidden;
+  margin-right:440px;
+  visibility: visible;
 }
 
 #catCrown {
-  visibility: hidden;
+  visibility: visible;
+}
+
+#muteBtn {
+  margin-right:400px;
+  background: url(./images/mute.png) no-repeat;
+  background-color: #757575;
+  background-size:cover;
+  width:40px;
+  height:40px;
+}
+
+#muteBtn:focus {
+  outline: none;
 }
 
 .score {
@@ -109,7 +123,7 @@ h1, h2 {
   font-family: 'Love Ya Like A Sister', cursive;
 }
 
-button {
+#dogBtn, #catBtn {
   background-image: url(./images/heart2.png);
   background-color: #757575;
   background-size:cover;
@@ -122,7 +136,7 @@ button {
   outline: none;
 }
 
-button:hover {
+#dogBtn:hover, #catBtn:hover {
     background: url(./images/heart.png) no-repeat;
     background-color: #757575;
     background-size:cover;
@@ -130,7 +144,7 @@ button:hover {
     width:80px;
 }
 
-button:active {
+#dogBtn:active, #catBtn:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -138,6 +152,8 @@ button:active {
 #dogBtn {
   margin-left: 150px;
 }
+
+
 
 .footer {
   display: flex;

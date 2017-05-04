@@ -8,6 +8,7 @@
   <body>
     <div class="App">
         <div class= "crownRow">
+          <button id="muteBtn" type="button"></button>
           <img id="catCrown" class="crowns" src='./images/crown.png' alt="logo"/>
           <img id="dogCrown" class="crowns" src='./images/crown.png'  alt="logo"/>
         </div>
@@ -54,15 +55,26 @@
       <script type="text/javascript">
             var socket = io('ws://localhost:3000/');
             var currentVote = document.getElementById("catScore");
+            var isMute = false;
 
             $(document).on('click', '#catBtn', function (e) { //On Cat Button click, send vote to server along with GIF ID
                 socket.emit('catVote', currentCatID);
                 currentVote = document.getElementById("catScore");
+                if(isMute !== true){
+                  var meow = new Audio();
+                  meow.src = "./sounds/cat.mp3";
+                  meow.play();
+                }
                 e.preventDefault();
             });
             $(document).on('click', '#dogBtn', function (e) { //On Dog Button click, send vote to server along with GIF ID
                 socket.emit('dogVote', currentDogID);
                 currentVote = document.getElementById("dogScore");
+                if(isMute !== true){
+                  var bark = new Audio();
+                  bark.src = "./sounds/dog.mp3";
+                  bark.play();
+                }
                 e.preventDefault();
             });
 
@@ -117,6 +129,15 @@
             copyDog.addEventListener('click', function(event) {
               copyTextToClipboard(currentDogURL);
               $('#toast').fadeIn(400).delay(400).fadeOut(400);
+            });
+
+            document.getElementById("muteBtn").addEventListener('click', function(event){
+              if(isMute == false){
+                isMute = true;
+              }
+              else{
+                isMute = false;
+              }
             });
 
             document.addEventListener('DOMContentLoaded', newMatchup);

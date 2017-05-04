@@ -2,46 +2,7 @@
 <head>
   <title>GIF Hall of Fame</title>
   <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
-  <style>
-    h1{
-      display: flex;
-      font-size: 300%;
-      flex-direction: row;
-      justify-content: center;
-      background-color: #222;
-      font-family: 'Love Ya Like A Sister', cursive;
-      color: white;
-    }
-    h2{
-      font-size:200%;
-      margin-left: 300px;
-    }
-    .gifs {
-      display: flex;
-      flex-direction:column;
-      justify-content:center;
-      background-color: #222;
-      color: white;
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-    .gif {
-      max-width: 350px;
-      max-height: 450px;
-      margin-left: 500px;
-      border: 10px solid #dfa855;
-      border-style: ridge;
-    }
-    body{
-      background-color: #222;
-    }
-
-    .toasts {
-      display:none;
-      margin-left: 530px;
-      font-family: 'Love Ya Like A Sister', cursive;
-    }
-  </style>
+  <link rel="stylesheet" href="hof.css">
 </head>
 <body>
   <div style="display: flex; flex-direction:row; justify-content: center;">
@@ -50,11 +11,23 @@
     <div style="height: 5px; width: 300px; background-color: #dfa855; margin-top: 60px; margin-left: 30px;"> </div>
   </div>
   <div class="gifs">
-    <h2>1.</h2> <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+    <h2>1.</h2>
+    <div class="top3">
+       <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+      <div id="gold"></div>
+    </div>
     <div id='toast0' class = "toasts">GIF URL copied to your clipboard!</div>
-    <h2>2.</h2> <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+    <h2>2.</h2>
+    <div class="top3">
+      <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+      <div id="silver"></div>
+    </div>
     <div id='toast1' class = "toasts">GIF URL copied to your clipboard!</div>
-    <h2>3.</h2> <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+    <h2>3.</h2> 
+    <div class="top3">
+      <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
+      <div id="bronze"></div>
+    </div>
     <div id='toast2' class = "toasts">GIF URL copied to your clipboard!</div>
     <h2>4.</h2> <img class="gif" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif" alt=""></img>
     <div id='toast3' class = "toasts">GIF URL copied to your clipboard!</div>
