@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cats vs. Dogs</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+  </head>
+  <body>
+    <div class="App">
+        <div class= "crownRow">
+          <button id="muteBtn" type="button"></button>
+          <img id="catCrown" class="crowns" src='./images/crown.png' alt="logo"/>
+          <img id="dogCrown" class="crowns" src='./images/crown.png'  alt="logo"/>
+        </div>
+        <div class="header" class="App-header">
+          <img src='./images/cat.png' class="App-logo" alt="logo"/>
+          <div>
+            <h1>Cats vs Dogs</h1>
+            <h4>Help us solve the age old question, GIF style.</h4>
+          </div>
+          <img src='./images/dog.png' class="App-logo" alt="logo"/>
+        </div>
+        <div class= "scores">
+          <div id="catScore" class="score pulse">0</div>
+          <div id="dogScore" class="score pulse">0</div>
+        </div>
+        <div class="gifs">
+          <img id="cat"></img>
+          <img id="dog"></img>
+        </div>
+        <div class="buttons">
+          <button id="catBtn" type="button">CAT</button>
+          <button id="dogBtn" type="button">DOG</button>
+        </div>
+        <div id='toast' style='display:none'>GIF URL copied to your clipboard!</div>
+        <div id="hallTitle">
+          <h2 style="background-color:#222;">Hall of Fame: </h2>
+        </div>
+        <div class="topThree">
+          <h1>1.  </h1> <img id="one" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif"></img>
+          <h1>2.  </h1> <img id="two" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif"></img>
+          <h1>3.  </h1> <img id="three" src="https://media3.giphy.com/media/O9CQyyhuUN3Py/giphy.gif"></img>
+        </div>
+        <div class="hofBtn"><a href="hof.html">Click Here To See Top 10!</a></div>
+        <div class="footer">
+          <div>
+            <p style="margin-left: 475px;">This App was built by Kevin Irace, Evan Xue, and James Stannish.</p>
+            <div style="margin-left: 475px;">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+          </div>
+          <img src='./images/giphy.gif' style="margin-left: 250px;"></img>
+        </div>
+      </div>
+      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+      <script type="text/javascript">
+            var socket = io('ws://cslab1.bc.edu:8115/');
+            var currentVote = document.getElementById("catScore");
+            var isMute = false;
+
+            $(document).on('click', '#catBtn', function (e) { //On Cat Button click, send vote to server along with GIF ID
+                socket.emit('catVote', currentCatID);
+                currentVote = document.getElementById("catScore");
+                if(isMute !== true){
+                  var meow = new Audio();
+                  meow.src = "./sounds/cat.mp3";
+                  meow.play();
+                }
+                e.preventDefault();
+            });
+            $(document).on('click', '#dogBtn', function (e) { //On Dog Button click, send vote to server along with GIF ID
+                socket.emit('dogVote', currentDogID);
+                currentVote = document.getElementById("dogScore");
+                if(isMute !== true){
+                  var bark = new Audio();
+                  bark.src = "./sounds/dog.mp3";
+                  bark.play();
+                }
+                e.preventDefault();
+            });
+
+            socket.on('updateScore', function ({catScore, dogScore}) { //Receive updated scores from the server, update view accordingly
+                document.getElementById("dogScore").innerText = dogScore;
+                document.getElementById("catScore").innerText = catScore;
+                currentVote.classList.remove("pulse");
+                void currentVote.offsetWidth;
+                currentVote.classList.add("pulse");
+
+                if(catScore > dogScore){
+                  document.getElementById("catCrown").style.visibility = 'visible';
+                  document.getElementById("dogCrown").style.visibility = 'hidden';
+                }
+                else if(dogScore > catScore){
+                  document.getElementById("catCrown").style.visibility = 'hidden';
+                  document.getElementById("dogCrown").style.visibility = 'visible';
+                }
+                else{
+                  document.getElementById("catCrown").style.visibility = 'hidden';
+                  document.getElementById("dogCrown").style.visibility = 'hidden';
+                }
+
+                if(catScore > 99){
+                  document.getElementById("catScore").style.width = "160px";
+                }
+                if(dogScore > 99){
+                  document.getElementById("dogScore").style.width = "160px";
+                }
+            });
+
+            socket.on('updateTop', function (top) { //Receive list of top 3 GIFs, pass on to updateTopGIFs to retrieve GIFs and update view
+                newMatchup();
+                if(top[0] !== undefined && top[1] !== undefined && top[2] !== undefined){
+                  updateTopGIFS(top);
+                }
+            });
+
+            document.addEventListener('DOMContentLoaded', function(){ //load current score when DOM is finished loading
+              socket.emit('getScore');
+            });
+
+
+            var copyCat = document.getElementById('cat');
+            var copyDog = document.getElementById('dog');
+
+            copyCat.addEventListener('click', function(event) {
+              copyTextToClipboard(currentCatURL);
+              $('#toast').fadeIn(400).delay(400).fadeOut(400);
+            });
+
+            copyDog.addEventListener('click', function(event) {
+              copyTextToClipboard(currentDogURL);
+              $('#toast').fadeIn(400).delay(400).fadeOut(400);
+            });
+
+            document.getElementById("muteBtn").addEventListener('click', function(event){
+              if(isMute == false){
+                isMute = true;
+              }
+              else{
+                isMute = false;
+              }
+            });
+
+            document.addEventListener('DOMContentLoaded', newMatchup);
+
+      </script>
+      <script src="giphy.js"></script>
+      <script src="extras.js"></script>
+  </body>
+</html>
