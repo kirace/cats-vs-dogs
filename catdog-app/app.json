@@ -1,0 +1,22 @@
+{
+  "name": "Cat-Dog-App",
+  "description": "my first socket.io app",
+  "website": "https://github.com/socketio/chat-example",
+  "repository": ,
+  "logo": ,
+  "success_url": "/",
+  "keywords": [
+    "node",
+    "express",
+    "socket.io",
+    "realtime",
+    "websocket"
+  ],
+  "scripts": {
+  },
+  "addons": [
+  ],
+  "env": {
+    
+  }
+}

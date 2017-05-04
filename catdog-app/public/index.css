@@ -1,0 +1,269 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: wiggle infinite 5s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 120px;
+  padding: 20px;
+  padding-top: 0px;
+  color: white;
+}
+
+#cat {
+  border: 5px solid #000000;
+  max-width: 350px;
+  max-height: 450px;
+}
+
+#dog {
+  border: 5px solid #000000;
+  max-width: 350px;
+  max-height: 450px;
+  margin-Left: 20px;
+}
+
+#dogScore {
+  margin-left:50px;
+}
+
+#dogCrown {
+  margin-left:370px;
+  visibility: hidden;
+}
+
+#catCrown {
+  visibility: hidden;
+}
+
+.score {
+  height:80px;
+  width:80px;
+  text-align:center;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  line-height:80px;
+  background-color: #222;
+  color:#f29718;
+  border-radius: 10px;
+  border: 2px solid #f29718;
+  font-weight:bold;
+  font-family:monospace;
+  font-size:400%;
+}
+
+#toast {
+    width:200px;
+    height:20px;
+    height:auto;
+    position:absolute;
+    left:50%;
+    margin-left:-100px;
+    bottom:10px;
+    background-color: #383838;
+    color: #F0F0F0;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 20px;
+    padding:10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wiggle {
+  0% {transform:rotate(4deg);}
+	50% {transform:rotate(-4deg);}
+	100% {transform:rotate(4deg);}
+}
+
+.score.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 1000ms;
+	transform-origin:70% 70%;
+	animation-timing-function: linear;
+}
+
+@keyframes pulse_animation {
+	0% { transform: scale(1); }
+	30% { transform: scale(1); }
+	40% { transform: scale(1); }
+	50% { transform: scale(1.09); }
+	60% { transform: scale(1); }
+	70% { transform: scale(1); }
+	80% { transform: scale(1); }
+	100% { transform: scale(1); }
+}
+
+h1, h2 {
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+button {
+  background-image: url(./images/heart2.png);
+  background-color: #757575;
+  background-size:cover;
+  height:80px;
+  width:80px;
+  border: 0;
+  font-weight:bold;
+  font-family:monospace;
+  font-size:150%;
+  outline: none;
+}
+
+button:hover {
+    background: url(./images/heart.png) no-repeat;
+    background-color: #757575;
+    background-size:cover;
+    height:80px;
+    width:80px;
+}
+
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#dogBtn {
+  margin-left: 150px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #222;
+  height: 50px;
+  line-height: 10px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  font-size: small;
+}
+
+a:link{
+  color: #94949E;
+}
+
+.gifs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #757575;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #222;
+  justify-content: center;
+  color:white;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.scores {
+  display: flex;
+  flex-direction: row;
+  background-color: #222;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.crownRow {
+  display: flex;
+  flex-direction: row;
+  background-color: #222;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #757575;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+
+/* --------------- Top GIFs Section ----------------------*/
+
+#hallTitle {
+  background-color: #222;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0;
+}
+
+.hofBtn {
+  background-color: #757575;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #222;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hofBtn a {
+    display: block;
+    width: 100%;
+    color: white;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    font-size:150%;
+    border-radius: 5px;
+}
+.hofBtn a:hover {
+    color: #222;
+    background: #f29718;
+}
+
+.topThree {
+  height:200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #757575;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.topThree.h1 {
+  margin-right:5px;
+}
+
+#one {
+  max-width: 200px;
+  max-height: 200px;
+  margin-Left: 30px;
+  margin-Right: 30px;
+}
+
+#two {
+  max-width: 200px;
+  max-height: 200px;
+  margin-Left: 30px;
+  margin-Right: 30px;
+}
+
+#three {
+  max-width: 200px;
+  max-height: 200px;
+  margin-Left: 30px;
+  margin-Right: 30px;
+}
