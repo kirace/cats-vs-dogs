@@ -47,7 +47,7 @@
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script type="text/javascript">
-        var socket = io('ws://localhost:3000/');
+        var socket = io('ws://cslab1.bc.edu:8115/');
 
         document.addEventListener('DOMContentLoaded', function(){ //load current score when DOM is finished loading
           socket.emit('getScore');
