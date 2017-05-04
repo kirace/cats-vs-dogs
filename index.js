@@ -17,7 +17,6 @@ function getTopGIFS(){ // creates array of map items and sorts them by votes, re
   sorted.sort(function(first, second) { //sort by value
     return second[1] - first[1];
   });
-  //console.log(sorted);
   return sorted; //sorted.splice(0,3);
 }
 

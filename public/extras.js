@@ -1,3 +1,4 @@
+
 function copyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
   textArea.style.position = 'fixed';
