@@ -116,6 +116,7 @@
 
             document.addEventListener('DOMContentLoaded', function(){ //load current score when DOM is finished loading
               socket.emit('getScore');
+              newMatchup();
             });
 
 
@@ -140,8 +141,6 @@
                 isMute = false;
               }
             });
-
-            document.addEventListener('DOMContentLoaded', newMatchup);
 
       </script>
       <script src="giphy.js"></script>
