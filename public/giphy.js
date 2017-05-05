@@ -102,9 +102,9 @@ function getURL(key, i){ //
     let data = JSON.parse(req.responseText).data.images.original.url;
     let obj = document.getElementsByTagName("img")[i];
     obj.src = data;
-    console.log(obj.hasEvent);
+    //console.log(obj.hasEvent);
     if(obj.hasEvent !== true){
-      console.log("YO");
+      //console.log("YO");
       obj.addEventListener('click', function(event) {
         copyTextToClipboard(data);
         let id = '#toast' + i;
