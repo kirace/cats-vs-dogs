@@ -55,7 +55,7 @@
 
         socket.on('updateTop', function (top) { //Receive list of GIFs, pass on to updateTopGIFs to retrieve GIFs and update view
             if(top !== undefined){
-              for(let i = 0; i < top.length; i++){
+              for(let i = 0; i < 10; i++){
                 if(top[i] !== undefined){
                   console.log(top[i]);
                   let url = getURL(top[i][0], i);
