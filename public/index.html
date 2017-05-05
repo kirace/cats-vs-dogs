@@ -60,6 +60,7 @@
             $(document).on('click', '#catBtn', function (e) { //On Cat Button click, send vote to server along with GIF ID
                 socket.emit('catVote', currentCatID);
                 currentVote = document.getElementById("catScore");
+                newMatchup();
                 if(isMute !== true){
                   var meow = new Audio();
                   meow.src = "./sounds/cat.mp3";
@@ -70,6 +71,7 @@
             $(document).on('click', '#dogBtn', function (e) { //On Dog Button click, send vote to server along with GIF ID
                 socket.emit('dogVote', currentDogID);
                 currentVote = document.getElementById("dogScore");
+                newMatchup();
                 if(isMute !== true){
                   var bark = new Audio();
                   bark.src = "./sounds/dog.mp3";
@@ -107,7 +109,6 @@
             });
 
             socket.on('updateTop', function (top) { //Receive list of top 3 GIFs, pass on to updateTopGIFs to retrieve GIFs and update view
-                newMatchup();
                 if(top[0] !== undefined && top[1] !== undefined && top[2] !== undefined){
                   updateTopGIFS(top);
                 }
